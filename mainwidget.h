@@ -8,11 +8,11 @@
 #include <QGraphicsItem>
 
 #include <QGraphicsRectItem>
-#include <QGraphicsEllipseItem>
-#include <QGraphicsLineItem>
-#include <QGraphicsPixmapItem>
 
 #include <QTimer>
+
+#include "Square.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,34 +20,32 @@ class mainwidget;
 }
 QT_END_NAMESPACE
 
-class Flighting_ball : public QGraphicsEllipseItem {
-public:
-	Flighting_ball(int yspread);
 
+class Victim: public QGraphicsRectItem {
 public:
-	virtual void advance(int phase);
-private:
-	double V_x = 4,
-		   V_y = 7,
-		   g = 9.81;
-	double t;
+	Victim(int pos);
 };
 
 
 class mainwidget : public QWidget
 {
 	Q_OBJECT
-
 public:
 	mainwidget(QWidget *parent = nullptr);
 	~mainwidget();
+
 private slots:
 	void onGenerate ();
+	void slotRebound(QGraphicsItem *item);
+	void slotDeleteVictim (QGraphicsItem *item);
 
 private:
 	Ui::mainwidget *ui;
 	QGraphicsScene *scene;
 	QTimer *animationTimer;
 	QTimer *generanorTimer;
+	Victim *victim;
+	Flighting_ball *ball;
+
 };
 #endif // MAINWIDGET_H
