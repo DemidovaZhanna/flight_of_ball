@@ -12,7 +12,7 @@
 #include "settlement.h"
 
 
-class Flighting_ball : public QGraphicsItem, public QPolygonF
+class Flighting_ball : public QGraphicsEllipseItem
 {
 public:
 	Flighting_ball(int yspread);
@@ -43,14 +43,14 @@ private:
 		   t_detach = 5;
 
 signals:
-	void signalCheckItem (QGraphicsItem *item); //сигнал передается в ядро игры и требуется принять решение о том, что делать с объектом
+	//void signalCheckItem (QGraphicsItem *item); //сигнал передается в ядро игры и требуется принять решение о том, что делать с объектом
 
 public slots:
-	void slotGameTimer (); //отвечает за обработку перемещения треугольника
+	//void slotGameTimer (); //отвечает за обработку перемещения треугольника
 
-protected:
-	QRectF boundingRect() const;
-	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+//protected:
+//	QRectF boundingRect() const;
+//	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 };
 
 #endif // SQUARE_H
