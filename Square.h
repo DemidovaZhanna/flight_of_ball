@@ -12,9 +12,8 @@
 #include "settlement.h"
 
 
-class Flighting_ball : public QObject, public QGraphicsItem, public QPolygonF
+class Flighting_ball : public QGraphicsItem, public QPolygonF
 {
-	Q_OBJECT
 public:
 	Flighting_ball(int yspread);
 	~Flighting_ball();
