@@ -8,6 +8,9 @@
 #include <QGraphicsItem>
 
 #include <QGraphicsRectItem>
+#include <QGraphicsEllipseItem>
+#include <QGraphicsLineItem>
+#include <QGraphicsPixmapItem>
 
 #include <QTimer>
 
@@ -37,13 +40,14 @@ public:
 private slots:
 	void onGenerate ();
 	void slotRebound(QGraphicsItem *item);
-	void slotDeleteVictim (QGraphicsItem *item);
+//	void slotDeleteVictim (QGraphicsItem *item);
 
 private:
 	Ui::mainwidget *ui;
 	QGraphicsScene *scene;
 	QTimer *animationTimer;
 	QTimer *generanorTimer;
+	QTimer *timer;
 	Victim *victim;
 	Flighting_ball *ball;
 
