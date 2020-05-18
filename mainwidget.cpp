@@ -9,12 +9,17 @@ mainwidget::mainwidget(QWidget *parent):
 	ui(new Ui::mainwidget)
 {
 	ui->setupUi(this);
+
 	scene = new QGraphicsScene (0, 0, 1920, 960, this);
 	ui->graphicsView->setScene(scene);
 	scene->addRect(scene->sceneRect());
 
-//	ball = new Flighting_ball (scene->sceneRect().height());
-//	scene->addItem(ball);
+	//ball = new Flighting_ball (scene->sceneRect().height());
+	//scene->addItem(ball);
+
+	//timer = new QTimer();
+	//connect(timer, &QTimer::timeout, ball, &Flighting_ball::slotGameTimer);
+	//timer->start(1000 / 100);
 
 //	connect(ball, &Flighting_ball::signalCheckItem, this, &mainwidget::slotRebound);
 
@@ -22,7 +27,6 @@ mainwidget::mainwidget(QWidget *parent):
 	scene->addItem(victim);
 
 //	connect(ball, &Flighting_ball::signalCheckItem, this, &mainwidget::slotDeleteVictim);
-
 
 	animationTimer = new QTimer(this);
 	connect(animationTimer, SIGNAL(timeout()), scene, SLOT(advance()));
@@ -53,15 +57,15 @@ void mainwidget::onGenerate()
 }
 
 
-void mainwidget::slotDeleteVictim(QGraphicsItem *item)
-{
-//получив сигнал от шарика, удаляем найденный статический объект
-//позднее можно создать список статический объектов, и удалять, исключая объект из списка
-	if (victim == item) {
-		scene->removeItem(victim); //пока что объект удаляется со сцены, впоследствии сделать так, чтобы ломался пополам
-		delete (victim);
-	}
-}
+//void mainwidget::slotDeleteVictim(QGraphicsItem *item)
+//{
+////получив сигнал от шарика, удаляем найденный статический объект
+////позднее можно создать список статический объектов, и удалять, исключая объект из списка
+//	if (victim == item) {
+//		scene->removeItem(victim); //пока что объект удаляется со сцены, впоследствии сделать так, чтобы ломался пополам
+//		delete (victim);
+//	}
+//}
 
 
 Victim::Victim(int pos): QGraphicsRectItem()
@@ -73,3 +77,5 @@ Victim::Victim(int pos): QGraphicsRectItem()
 	setRect(0, 0, width_of_victim, height_of_victim);
 	setPos(1075, 960 - height_of_victim);
 }
+
+
